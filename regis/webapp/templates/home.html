@@ -1,26 +1,74 @@
-{% extends "base.html" %}
-{% block content %}
-{% if user.is_authenticated %}
-<div class="col-md-6 offset-md-3">
+{% extends 'base.html' %}
 
-<h1>Welcome to DigiREC</h1>
-{% else %}
-<h3>Login</h3>
-<form method = "POST" action="{%url 'home'%}">
-{% csrf_token %}
-<form>
-    <div class="mb-3">
-      
-      <input type="text" class="form-control" name="username" placeholder="Username" required>
+{% block content %}
+
+
+
+{% if user.is_authenticated %}
+
+
+<table class="table table-striped table-hover table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">ADDRESS</th>
+      <th scope="col">TOWN</th>
+      <th scope="col">COUNTY</th>
+      <th scope="col">Created At</th>
+      <th scope="col">ID</th>
+    </tr>
+  </thead>
+  <tbody>
     
-    </div><br>
-    <div class="mb-3">
-   
-      <input type="password" class="form-control" name="password" placeholder="Password" required>
-    </div>
-    <br>
-    <button type="submit" class="btn btn-secondary">LOGIN</button>
-  </form>
-</form>
+{% if records %}
+	{% for record in records %}
+		<tr>
+			<td>{{ record.first_name }} {{ record.last_name }}</td>
+			<td>{{ record.email }}</td>
+			<td>{{ record.phone }}</td>
+			<td>{{ record.address }}</td>
+			<td>{{ record.town }}</td>
+			<td>{{ record.county }}</td>
+			<td>{{ record.created_at }}</td>
+			
+		</tr>
+	{% endfor %}
+
 {% endif %}
-{% endblock  %}
+
+	
+	  </tbody>
+	</table>
+
+
+
+
+
+{% else %}
+
+<div class="col-md-6 offset-md-3">
+<h1>Login</h1>
+<br/>
+
+<form method="POST" action="{% url 'home' %}">
+	{% csrf_token %}
+
+  <div class="mb-3">
+    <input type="text" class="form-control" name="username", placeholder="Username" required>
+    
+  </div><br/>
+  <div class="mb-3">
+    <input type="password" class="form-control" name="password", placeholder="Password" required>
+  </div>
+  <br/>
+  <button type="submit" class="btn btn-secondary">Login</button>
+
+</form>
+
+
+
+{% endif %}
+
+{% endblock %}

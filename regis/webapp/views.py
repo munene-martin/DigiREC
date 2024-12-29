@@ -61,8 +61,12 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib import messages
 from .forms import RegisterForm
+from .models import Record
 
 def home(request):
+    records = Record.objects.all()
+
+
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
@@ -77,7 +81,7 @@ def home(request):
             messages.error(request, 'Invalid credentials, please try again')
             return redirect('home')
     else:
-        return render(request, 'home.html', {})
+        return render(request, 'home.html', {'records': records})
 
 def login_user(request):
     if request.method == 'POST':
@@ -92,7 +96,7 @@ def login_user(request):
             messages.error(request, 'Invalid credentials, please try again')
             return redirect('login')
     else:
-        return render(request, 'login.html')
+        return render(request, 'home.html',)
 
 def logout_user(request):
     auth_logout(request)
