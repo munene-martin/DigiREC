@@ -41,4 +41,5 @@ def logout(request):
     return redirect('home')
 
 def register_user(request):
-    return render(request, 'register.html', {})
+    # if request.method == 'POST':
+    return render(request, 'register_user.html', {})
