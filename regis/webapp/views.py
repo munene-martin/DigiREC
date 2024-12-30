@@ -119,3 +119,11 @@ def register_user(request):
         form = RegisterForm()
     
     return render(request, 'register_user.html', {'form': form})
+
+def one_record(request, pk):
+        if request.user.is_authenticated:
+          one_record = Record.objects.get(id=pk)
+          return render(request, 'record.html', {'one_record':one_record})
+        else:
+            messages.error(request, 'Please login to view this page ')
+            return redirect('login_user')

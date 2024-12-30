@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-
-
+<div class="center">
+  <div class="col-md-6 offset-md-3">
+<h2>WELCOME TO DigiREC </h2>
+<h4>Track All Your Casual Employees</h4>
+</div>
+<hr>
 {% if user.is_authenticated %}
 
 
@@ -32,7 +35,7 @@
 			<td>{{ record.town }}</td>
 			<td>{{ record.county }}</td>
 			<td>{{ record.created_at }}</td>
-			
+			<td><a href = "{%url 'record' record.id%}">{{ record.id }}</a></td>
 		</tr>
 	{% endfor %}
 

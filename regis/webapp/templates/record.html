@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<h4>View Singular Record:</h4>
+<hr>
+
+<div class="card w-50">
+    <div class="card-header">
+        <td>{{ one_record.first_name }} {{ one_record.last_name }}</td>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">
+      <td>{{ one_record.email }}</td> <br>
+      <td>{{ one_record.phone }}</td><br>
+      <td>{{ one_record.address }}</td><br>
+      <td>{{ one_record.town }}</td><br>
+      <td>{{ one_record.county }}</td><br>
+      <td>{{ one_record.created_at }}</td>
+      </h5>
+    </div>
+  </div>
+  <br>
+<a href="{% url 'home'%}" class="btn btn-secondary">Back</a>
+
+<a href="{% url 'home'%}" class="btn btn-danger">DELETE</a>
+
+{% comment %} {{one_record}}
+<td>{{ record.first_name }} {{ record.last_name }}</td><br> {% endcomment %}
+			{% comment %} <td>{{ one_record.email }}</td><br>
+			<td>{{ one_record.phone }}</td><br>
+			<td>{{ one_record.address }}</td><br>
+			<td>{{ one_record.town }}</td><br>
+			<td>{{ one_record.county }}</td><br>
+			<td>{{ one_record.created_at }}</td><br> {% endcomment %}
+{% endblock %}
