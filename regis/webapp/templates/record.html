@@ -8,20 +8,24 @@
         <td>{{ one_record.first_name }} {{ one_record.last_name }}</td>
     </div>
     <div class="card-body">
-      <h5 class="card-title">
-      <td>{{ one_record.email }}</td> <br>
-      <td>{{ one_record.phone }}</td><br>
-      <td>{{ one_record.address }}</td><br>
-      <td>{{ one_record.town }}</td><br>
-      <td>{{ one_record.county }}</td><br>
-      <td>{{ one_record.created_at }}</td>
+     <h5 class="card-title">
+        <strong>EMAIL: </strong><td>{{ one_record.email }}</td> <br>
+      <strong>PHONE: </strong><td>{{ one_record.phone }}</td><br>
+     <strong>ADDRESS: </strong> <td>{{ one_record.address }}</td><br>
+      <strong>TOWN: </strong><td>{{ one_record.town }}</td><br>
+      <strong>COUNTY: </strong><td>{{ one_record.county }}</td><br>
+     <strong>Date Created: </strong> <td>{{ one_record.created_at }}</td>
       </h5>
     </div>
   </div>
   <br>
 <a href="{% url 'home'%}" class="btn btn-secondary">Back</a>
 
-<a href="{% url 'home'%}" class="btn btn-danger">DELETE</a>
+<a href="{% url 'delete_record' one_record.id %}" class="btn btn-danger">DELETE</a>
+
+
+<a href="{% url 'update_record'  one_record.id%}" class="btn btn-secondary">UPDATE RECORD</a>
+
 
 {% comment %} {{one_record}}
 <td>{{ record.first_name }} {{ record.last_name }}</td><br> {% endcomment %}
