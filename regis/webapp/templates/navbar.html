@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
 
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url "home" %}">REGIS</a>
+      <a class="navbar-brand" href="{% url "home" %}">REGIS 💯</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -12,12 +12,12 @@
 
 
          <li class="nav-item">
-          <a class="nav-link" href="{% url "add_record" %}">Add Record</a>
+          <a class="nav-link" href="{% url "add_record" %}">Add Record ➕</a>
         </li> 
          
 
           <li class="nav-item">
-            <a class="nav-link" href="{% url "logout" %}">Logout</a>
+            <a class="nav-link" href="{% url "logout" %}">Logout ↩️</a>
           </li> 
             {% else %}
 
@@ -29,6 +29,13 @@
                 <a class="nav-link" href="{% url "home"%}">Login</a>
               </li> 
             {% endif %}
+            <li class="nav-item">
+              <a class="nav-link" href="mailto:contact@example.com">For Queries 📞</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://x.com/@WingChun57" target="_blank">Follow on X 🐦</a>
+            </li>
+
         </ul>
       </div>
     </div>

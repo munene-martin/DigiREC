@@ -57,12 +57,13 @@
 # 		return render(request, 'register_user.html', {'form':form})
 
 # 	return render(request, 'register_user.html', {'form':form})
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib import messages
 from .forms import RegisterForm, AddRecordForm
 from .models import Record
 
+from django.template.loader import render_to_string
 def home(request):
     records = Record.objects.all()
 
@@ -176,3 +177,13 @@ def update_record(request, pk):
             return redirect('home')
 
     return render(request, 'add_record.html', {'form': form})
+
+
+# def generate_pdf(request):
+#     records = Record.objects.all()
+#     html_string = render_to_string('records_pdf.html', {'records': records})
+#     html = HTML(string=html_string)
+#     response = HttpResponse(content_type='application/pdf')
+#     response['Content-Disposition'] = 'inline; filename=records.pdf'
+#     html.write_pdf(response)
+#     return response
